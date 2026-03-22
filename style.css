@@ -1,0 +1,216 @@
+/* 1. COLOR PALETTE & VARIABLES */
+:root {
+    --slate-blue: #607d8b;    /* Overlays */
+    --crimson: #b71c1c;       /* Call to Action */
+    --charcoal: #372e3c;      /* Navbar/Dark sections */
+    --sandy-beige: #edc9a1;   /* Accents/Borders */
+    --espresso: #4a3728;      /* Text */
+    --white: #ffffff;
+    --light-bg: #f9f7f2;      /* Section contrast */
+}
+
+/* 2. UNIVERSAL RESET */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    color: var(--espresso); 
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+/* 3. NAVIGATION */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: var(--charcoal);
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo { 
+    font-weight: 900; 
+    color: var(--sandy-beige); 
+    font-size: 1.4rem; 
+    text-transform: uppercase;
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+}
+
+.nav-links li { 
+    margin-left: 40px; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover { 
+    color: var(--sandy-beige); 
+}
+
+/* 4. HERO / WELCOME SECTION */
+.welcome-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* FIX: Corrected path to Image folder */
+    background: linear-gradient(rgba(55, 46, 60, 0.7), rgba(96, 125, 139, 0.6)), 
+                url('Image/1.jpg') center/cover no-repeat;
+    color: var(--white);
+    padding: 100px 20px 0;
+}
+
+.hero-logo {
+    width: 2in; 
+    height: 2in;
+    object-fit: contain; 
+    margin: 0 auto 15px;
+    display: block;
+}
+
+.church-tag { 
+    display: block;
+    color: var(--sandy-beige);
+    letter-spacing: 5px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+/* 5. PHOTO GALLERY (4x2 Grid) */
+.gallery-section {
+    padding: 80px 2%;
+    text-align: center;
+}
+
+.photo-grid-4x2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(2, 400px); 
+    gap: 15px;
+    max-width: 1400px;
+    margin: 40px auto;
+}
+
+.photo-item {
+    background-color: var(--charcoal);
+    border: 2px solid var(--sandy-beige);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.02);
+    z-index: 5;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 6. LEADERSHIP SECTION */
+.leader-card {
+    background: var(--light-bg);
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin: 40px auto;
+}
+
+.leader-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--crimson);
+    margin-right: 30px;
+}
+
+.action-link {
+    text-decoration: none;
+    color: var(--crimson);
+    font-weight: 700;
+    padding: 8px 16px;
+    border: 1px solid var(--sandy-beige);
+    border-radius: 20px;
+    transition: 0.3s;
+    margin: 10px 5px;
+    display: inline-block;
+}
+
+.action-link:hover {
+    background: var(--crimson);
+    color: var(--white);
+}
+
+/* 7. BUTTONS */
+.cta-vibrant {
+    background-color: var(--crimson);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.cta-vibrant:hover {
+    background-color: var(--charcoal);
+    transform: translateY(-2px);
+}
+
+/* 8. MOBILE RESPONSIVENESS */
+@media (max-width: 900px) {
+    .photo-grid-4x2 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+    .photo-item { height: 300px; }
+}
+
+@media (max-width: 600px) {
+    .navbar { padding: 1rem 2%; }
+    .nav-links li { margin-left: 15px; }
+    .leader-card { flex-direction: column; text-align: center; }
+    .leader-photo { margin-right: 0; margin-bottom: 20px; }
+    .photo-grid-4x2 { grid-template-columns: 1fr; }
+}
